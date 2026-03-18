@@ -1,3 +1,4 @@
+import asyncio
 from pathlib import Path
 
 import pikepdf
@@ -71,15 +72,16 @@ async def handle_jm(msg, user_id, send_func):
         await send_func(msg_text)
         return
 
-    # ================= 下载 =================
+    # 下载
     album_id = cmd
 
-    await send_func("📥 正在下载，请稍等...")
     try:
+        await send_func("📥 正在下载，请稍等...")
         Path("pdf").mkdir(exist_ok=True)
+        Path("encrypted").mkdir(exist_ok=True)
         download_jm(album_id)
-        file_path = f"pdf/{album_id}_unencrypted.pdf"
-        encrypted_file_path = f"pdf/{album_id}.pdf"
+        file_path = f"pdf/{album_id}.pdf"
+        encrypted_file_path = f"encrypted/{album_id}.pdf"
         password = f"{album_id}"
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"下载失败：文件 {file_path} 不存在")
@@ -95,15 +97,27 @@ async def handle_jm(msg, user_id, send_func):
         print(f"加密完成: {encrypted_file_path}")
 
         # 删除原始未加密文件
-        os.remove(file_path)
+        await delete_file_after_delay(file_path, 0)
         print(f"已删除原始文件: {file_path}")
 
         await msg.reply(rtf=MessageChain([
             File(encrypted_file_path)
         ]))
         await send_func("密码为本子ID")
+
+        await delete_file_after_delay(encrypted_file_path, 20)
     except Exception as e:
         await send_func(f"❌ 下载失败：{str(e)}")
+
+
+async def delete_file_after_delay(file_path, delay_seconds):
+    await asyncio.sleep(delay_seconds)
+    try:
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            print(f"✅ 已自动删除文件: {file_path}")
+    except Exception as e:
+        print(f"❌ 删除文件失败: {e}")
 
 
 # 群消息
