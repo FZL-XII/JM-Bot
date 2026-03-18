@@ -14,7 +14,7 @@ cd JM-Bot
 2. 安装依赖 
 
 ```bash
-pip install -r requirements.txt`
+pip install -r requirements.txt
 ```
 
 3. 下载 napcat
@@ -23,7 +23,7 @@ pip install -r requirements.txt`
 
 推荐轻量化的一键部署方案
 
-找到`\NapCat.Shell.Windows.OneKey\NapCat.44498.Shell\versions\9.9.26-44498\resources\app\napcat\config` 文件夹下的 `onebot11_XXXXXXX.json`文件修改配置
+找到`\NapCat.Shell.Windows.OneKey\NapCat.44498.Shell\versions\9.9.26-44498\resources\app\napcat\config` 文件夹下的 `onebot11_XXXXXXX.json` 文件修改 `websocketServers` 配置
 
 ```bash 
     "websocketServers": [
