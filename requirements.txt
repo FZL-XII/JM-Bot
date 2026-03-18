@@ -1,0 +1,3 @@
+jmcomic==2.6.15
+ncatbot==3.8.8.post7
+pikepdf==9.11.0
