@@ -28,14 +28,11 @@ desktop.ini
 *.swp
 *.swo
 
-*_quickLogin.bat
-
 napcat/
 runtime/
 log/
 logs/
 
-NapCatQQ-Desktop.exe
-
 pdf/
 stock/
+encrypted/
