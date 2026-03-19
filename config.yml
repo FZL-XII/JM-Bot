@@ -1,7 +1,7 @@
 version: '1.0'
 
 dir_rule:
-  base_dir: stock
+  base_dir: download/stock
   rule: Bd_Atitle_Pindex
 
 client:
@@ -29,6 +29,6 @@ plugins:
   after_album:
     - plugin: img2pdf
       kwargs:
-        img_dir: stock
-        pdf_dir: pdf
+        img_dir: download/stock
+        pdf_dir: download/pdf
         filename_rule: Aid
