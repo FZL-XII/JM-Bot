@@ -45,17 +45,17 @@ pip install -r requirements.txt
 
 `\NapCat.Shell.Windows.OneKey\NapCat.44498.Shell` 文件夹下 `napcat.bat`启动
 
-更改 `main.py` 各参数，运行 `python main.py`，接下来按照指示操作。
+更改 `client.py` 各参数，运行 `start.bat` 
 
 ## Usage
 
-输入 /jm <id:xxx> ，机器人会自动下载生成 pdf 并发送消息。
+命令：
 
-例： /jm 350234
+/jm 纯数字
 
-输入 /jm <中文> ，机器人会自动搜索并发送消息。
+/jm 搜索 [搜索内容]
 
-例： /jm 中文
+/jm 排行榜 [全部/今天/本周/本月] [全部/同人/单本/短篇/韩漫/美漫/3D] [最新/按最新/浏览量/图片多/点赞数/评分/评论数]
 
 ## Reference
 
