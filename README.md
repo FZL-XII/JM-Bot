@@ -2,7 +2,9 @@
 
 基于 Napcat, NcatBot, JMComic-Crawler-Python 的 QQ 机器人。
 
-## Install
+本项目仅供学习交流使用，请勿用于非法用途。使用本项目产生的一切后果由使用者自行承担。
+
+## 安装
 
 1. 克隆项目
 
@@ -19,11 +21,11 @@ pip install -r requirements.txt
 
 3. 下载 napcat
 
-下载：https://github.com/NapNeko/NapCatQQ/releases
+    下载：https://github.com/NapNeko/NapCatQQ/releases
 
-推荐轻量化的一键部署方案
+    推荐轻量化的一键部署方案
 
-找到`\NapCat.Shell.Windows.OneKey\NapCat.44498.Shell\versions\9.9.26-44498\resources\app\napcat\config` 文件夹下的 `onebot11_XXXXXXX.json` 文件修改 `websocketServers` 配置
+    找到`\NapCat.Shell.Windows.OneKey\NapCat.44498.Shell\versions\9.9.26-44498\resources\app\napcat\config` 文件夹下的 `onebot11_XXXXXXX.json` 文件修改 `websocketServers` 配置
 
 ```bash 
     "websocketServers": [
@@ -43,21 +45,18 @@ pip install -r requirements.txt
 ```
 4. 运行
 
-`\NapCat.Shell.Windows.OneKey\NapCat.44498.Shell` 文件夹下 `napcat.bat`启动
+    `\NapCat.Shell.Windows.OneKey\NapCat.44498.Shell` 文件夹下 `napcat.bat`启动
 
-更改 `client.py` 各参数，运行 `start.bat` 
+    更改 `client.py` 各参数，运行 `start.bat` 
 
-## Usage
-
-命令：
-
+## 命令
 /jm 纯数字
 
 /jm 搜索 [搜索内容]
 
 /jm 排行榜 [全部/今天/本周/本月] [全部/同人/单本/短篇/韩漫/美漫/3D] [最新/按最新/浏览量/图片多/点赞数/评分/评论数]
 
-## Reference
+## 参考
 
 - [NapCatQQ](https://napcat.napneko.icu/)
 - [NcatBot](https://docs.ncatbot.xyz/)
