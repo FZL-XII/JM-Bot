@@ -18,8 +18,6 @@ async def handle_douyin(msg):
     if not is_douyin_url(url):
         return
 
-    await msg.reply("检测到抖音链接，正在解析...")
-
     real_url = get_real_url(url)
     video_id = get_video_id(real_url)
 

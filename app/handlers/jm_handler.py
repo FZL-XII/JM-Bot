@@ -20,7 +20,7 @@ async def handle_jm(msg, send):
     if "搜索" in cmd:
         result = search(cmd.replace("搜索", "").strip())
         if not result:
-            await send("没搜到 😢")
+            await send("无内容")
             return
         set_cache(msg.user_id, result)
 
@@ -59,7 +59,6 @@ async def handle_jm(msg, send):
     # 纯数字
     elif cmd.isdigit():
         try:
-            await send("📥 正在下载，请稍等...")
             Path("download").mkdir(exist_ok=True)
             Path("download/pdf").mkdir(exist_ok=True)
             Path("download/encrypted").mkdir(exist_ok=True)
