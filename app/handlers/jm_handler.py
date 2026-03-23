@@ -24,7 +24,7 @@ async def handle_jm(msg, send):
             return
         set_cache(msg.user_id, result)
 
-        msg_text = "🔎 搜索结果：\n\n"
+        msg_text = "搜索结果：\n\n"
         for i, r in enumerate(result):
             msg_text += f"{i + 1}. {r['id']} | {r['title']}\n"
         msg_text += "\n👉 发送 【/jm id】 下载"
@@ -50,10 +50,10 @@ async def handle_jm(msg, send):
 
         result = search_ranking_list(time_range, category, sort_by)
 
-        msg_text = "🔎 搜索结果：\n\n"
+        msg_text = "搜索结果：\n\n"
         for i, r in enumerate(result):
             msg_text += f"{i + 1}. {r['id']} | {r['title']}\n"
-        msg_text += "\n👉 发送 【/jm id】 下载"
+        msg_text += "\n发送 【/jm id】 下载"
         await send(msg_text)
 
     # 纯数字
@@ -80,7 +80,7 @@ async def handle_jm(msg, send):
             await auto_delete(dst, 20)
 
         except Exception as e:
-            await send(f"❌ 下载失败：{str(e)}")
+            await send(f"下载失败：{str(e)}")
     else:
         msg_text = ("命令：\n"
                     "/jm 纯数字\n"

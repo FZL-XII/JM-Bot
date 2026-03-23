@@ -61,7 +61,7 @@ def get_video_id(url):
 def fetch_video_data(video_url):
     """获取视频数据"""
     if not HAS_REQUESTS:
-        print("❌ 需要 requests 库，请安装: pip3 install requests", file=sys.stderr)
+        print("需要 requests 库，请安装: pip3 install requests", file=sys.stderr)
         return None
 
     headers = {

@@ -18,19 +18,19 @@ async def handle_douyin(msg):
     if not is_douyin_url(url):
         return
 
-    await msg.reply("📥 检测到抖音链接，正在解析...")
+    await msg.reply("检测到抖音链接，正在解析...")
 
     real_url = get_real_url(url)
     video_id = get_video_id(real_url)
 
     if not video_id:
-        await msg.reply("解析失败")
+        await msg.reply("分享链接有误")
         return
 
     share_url = f"https://www.iesdouyin.com/share/video/{video_id}/"
     video_info = fetch_video_data(share_url)
     if not video_info or not video_info['video_urls']:
-        await msg.reply("解析失败")
+        await msg.reply("分享链接有误")
         return
 
     video_urls = video_info['video_urls']
