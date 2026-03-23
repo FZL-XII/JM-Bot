@@ -5,11 +5,12 @@ dir_rule:
   rule: Bd_Atitle_Pindex
 
 client:
-  # domain:
-  #   - 18comic.vip
-  #   - 18comic.org
-  #   - 18comic-mygo.org
-  #   - 18comic-mygo.vip
+#  domain:
+#    - 18comic.vip
+#    - jmcomic.me
+#    - jmcomic1.me
+#    - 18comic-palworld.club
+#    - 18comic.org
   retry_times: 5
 
 download:

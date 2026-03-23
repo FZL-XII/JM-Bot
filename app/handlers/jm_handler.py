@@ -3,7 +3,8 @@ from pathlib import Path
 
 from app.repository.cache_repo import set_cache
 from app.services.jm_service import search, download, search_ranking_list
-from app.services.pdf_service import encrypt, auto_delete
+from app.services.pdf_service import encrypt
+from app.utils.util import auto_delete
 from ncatbot.core.element import MessageChain, Text, File
 
 

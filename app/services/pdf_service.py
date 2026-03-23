@@ -1,6 +1,3 @@
-import asyncio
-import os
-
 import pikepdf
 
 
@@ -14,9 +11,3 @@ def encrypt(src, dst, password):
                 R=4,
             )
         )
-
-
-async def auto_delete(path, delay):
-    await asyncio.sleep(delay)
-    if os.path.exists(path):
-        os.remove(path)
