@@ -1,11 +1,11 @@
 import os
 from pathlib import Path
 
-from app.repository.cache_repo import set_cache
+from ncatbot.core.element import MessageChain, File
+
 from app.services.jm_service import search, download, search_ranking_list
 from app.services.pdf_service import encrypt
 from app.utils.util import auto_delete
-from ncatbot.core.element import MessageChain, Text, File
 
 
 async def handle_jm(msg, send):
@@ -22,7 +22,6 @@ async def handle_jm(msg, send):
         if not result:
             await send("无内容")
             return
-        set_cache(msg.user_id, result)
 
         msg_text = "搜索结果：\n\n"
         for i, r in enumerate(result):

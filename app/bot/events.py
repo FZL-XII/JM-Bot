@@ -1,10 +1,11 @@
-from app.handlers.douyin_handler import handle_douyin
-from app.handlers.jm_handler import handle_jm
-from app.handlers.x_handler import handle_x
 from ncatbot.core import GroupMessage, PrivateMessage
 from ncatbot.core.element import MessageChain, Text
 from ncatbot.utils.logger import get_log
 
+from app.handlers.bilibili_handler import handle_bilibili
+from app.handlers.douyin_handler import handle_douyin
+from app.handlers.jm_handler import handle_jm
+from app.handlers.x_handler import handle_x
 from .client import bot
 
 _log = get_log()
@@ -21,6 +22,8 @@ async def on_group(msg: GroupMessage):
         await handle_jm(msg, send)
     elif "x.com" in msg.raw_message.strip() or "twitter.com" in msg.raw_message.strip():
         await handle_x(msg, send)
+    elif "video/av" in msg.raw_message.strip() or "b23.tv" in msg.raw_message.strip():
+        await handle_bilibili(msg)
     else:
         await handle_douyin(msg)
 
@@ -39,5 +42,7 @@ async def on_private(msg: PrivateMessage):
         await handle_jm(msg, send)
     elif "x.com" in msg.raw_message.strip() or "twitter.com" in msg.raw_message.strip():
         await handle_x(msg, send)
+    elif "video/av" in msg.raw_message.strip() or "b23.tv" in msg.raw_message.strip():
+        await handle_bilibili(msg)
     else:
         await handle_douyin(msg)
