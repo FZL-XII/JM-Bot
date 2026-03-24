@@ -60,7 +60,7 @@ yt-dlp --cookies-from-browser edge --cookies cookies.txt
 # chrome浏览器提取cookies
 yt-dlp --cookies-from-browser chrome --cookies cookies.txt
 ```
-方法2： 浏览器使用扩展：`Get cookies.txt LOCALLY`  登录X账号之后，导出 `cookies.txt`
+方法2： 浏览器使用扩展商店下载：`Get cookies.txt LOCALLY`  登录X账号之后，导出 `cookies.txt`
 
 ### 运行
 `\NapCat.Shell.Windows.OneKey\NapCat.44498.Shell` 文件夹下 `napcat.bat`启动
