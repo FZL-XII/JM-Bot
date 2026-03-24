@@ -1,5 +1,6 @@
 from app.handlers.douyin_handler import handle_douyin
 from app.handlers.jm_handler import handle_jm
+from app.handlers.x_handler import handle_x
 from ncatbot.core import GroupMessage, PrivateMessage
 from ncatbot.core.element import MessageChain, Text
 from ncatbot.utils.logger import get_log
@@ -18,6 +19,8 @@ async def on_group(msg: GroupMessage):
 
     if msg.raw_message.strip().startswith("/jm"):
         await handle_jm(msg, send)
+    elif "x.com" in msg.raw_message.strip() or "twitter.com" in msg.raw_message.strip():
+        await handle_x(msg, send)
     else:
         await handle_douyin(msg)
 
@@ -34,5 +37,7 @@ async def on_private(msg: PrivateMessage):
 
     if msg.raw_message.strip().startswith("/jm"):
         await handle_jm(msg, send)
+    elif "x.com" in msg.raw_message.strip() or "twitter.com" in msg.raw_message.strip():
+        await handle_x(msg, send)
     else:
         await handle_douyin(msg)

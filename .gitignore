@@ -27,6 +27,7 @@ desktop.ini
 *.bak
 *.swp
 *.swo
+cookies.txt
 
 napcat/
 runtime/
