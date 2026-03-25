@@ -1,28 +1,19 @@
-import html
-import json
-import re
-
 from ncatbot.core.element import MessageChain, File
 
-from app.services.bilibili_service import download_bilibili_video
+from app.services.bilibili_service import extract_url, download_bilibili_video
 from app.utils.util import auto_delete
 
 
 async def handle_bilibili(msg, send):
-    m = re.search(r'\[CQ:json,data=(.*)\]', msg.raw_message, re.S)
-    if not m:
-        return
-    data_str = m.group(1)
-    data_str = html.unescape(data_str)
-    data = json.loads(data_str)
-    url = data['meta']['detail_1']['qqdocurl']
+    url = extract_url(msg)
 
     if not url:
         return
 
-    output_path = download_bilibili_video(url, send)
+    output_path = download_bilibili_video(url)
 
     if not output_path:
+        await send("下载失败")
         return
 
     # 发送视频文件

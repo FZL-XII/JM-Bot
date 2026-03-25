@@ -8,6 +8,8 @@ QQ机器人 当前功能：
 
 3、推特分享视频链接下载
 
+4、B站通过分享链接、小程序视频下载
+
 本项目仅供学习交流使用，请勿用于非法用途。使用本项目产生的一切后果由使用者自行承担。
 
 ## 安装
@@ -61,6 +63,10 @@ yt-dlp --cookies-from-browser edge --cookies cookies.txt
 yt-dlp --cookies-from-browser chrome --cookies cookies.txt
 ```
 方法2： 浏览器使用扩展商店下载：`Get cookies.txt LOCALLY`  登录X账号之后，导出 `cookies.txt` 在主目录下面新增一个config文件夹，将 `cookies.txt`放到该文件夹下
+
+
+### 启用bilibili视频下载功能
+需要下载 `ffmpeg` 配置环境变量，链接形式需要通过视频的分享按钮可转发到微信或QQ的小程序，或者是复制分享链接
 
 ### 运行
 `\NapCat.Shell.Windows.OneKey\NapCat.44498.Shell` 文件夹下 `napcat.bat`启动

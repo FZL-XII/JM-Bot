@@ -1,3 +1,5 @@
+import html
+import json
 import os
 import re
 import shutil
@@ -20,7 +22,29 @@ s = requests.session()
 ffmpeg_path = shutil.which("ffmpeg")
 
 
-async def download_bilibili_video(url, send):
+def extract_url(msg):
+    # 分支1：CQ JSON 格式
+    m = re.search(r'\[CQ:json,data=(.*)\]', msg.raw_message, re.S)
+    if m:
+        data_str = m.group(1)
+        data_str = html.unescape(data_str)  # 转义字符
+        try:
+            data = json.loads(data_str)
+            url = data['meta']['detail_1']['qqdocurl']
+            return url
+        except (json.JSONDecodeError, KeyError):
+            pass  # JSON解析失败或字段不存在，则尝试下一种方式
+
+    # 分支2：普通字符串
+    url_match = re.search(r'(https?://[^\s]+(?:b23\.tv|video/av)[^\s]*)', msg.raw_message)
+    if url_match:
+        return url_match.group(1)
+
+    # 两种方式都没匹配到
+    return None
+
+
+def download_bilibili_video(url):
     # ===== 1. 短链处理 =====
     if 'b23.tv' in url:
         resp = s.get(url, allow_redirects=False)
@@ -61,7 +85,6 @@ async def download_bilibili_video(url, send):
     data = play['data']
 
     if 'dash' not in data:
-        await send("当前权限不足或登录失效")
         return
 
     dash = data['dash']
