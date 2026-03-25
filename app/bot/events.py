@@ -23,7 +23,7 @@ async def on_group(msg: GroupMessage):
     elif "x.com" in msg.raw_message.strip() or "twitter.com" in msg.raw_message.strip():
         await handle_x(msg, send)
     elif "video/av" in msg.raw_message.strip() or "b23.tv" in msg.raw_message.strip():
-        await handle_bilibili(msg)
+        await handle_bilibili(msg, send)
     else:
         await handle_douyin(msg)
 

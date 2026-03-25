@@ -8,8 +8,7 @@ from app.services.bilibili_service import download_bilibili_video
 from app.utils.util import auto_delete
 
 
-async def handle_bilibili(msg):
-    # 1️⃣ 提取 data 部分
+async def handle_bilibili(msg, send):
     m = re.search(r'\[CQ:json,data=(.*)\]', msg.raw_message, re.S)
     if not m:
         return
@@ -21,7 +20,7 @@ async def handle_bilibili(msg):
     if not url:
         return
 
-    output_path = download_bilibili_video(url)
+    output_path = download_bilibili_video(url, send)
 
     if not output_path:
         return
