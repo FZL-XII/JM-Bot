@@ -23,24 +23,23 @@ ffmpeg_path = shutil.which("ffmpeg")
 
 
 def extract_url(msg):
-    # 分支1：CQ JSON 格式
-    m = re.search(r'\[CQ:json,data=(.*)\]', msg.raw_message, re.S)
-    if m:
-        data_str = m.group(1)
-        data_str = html.unescape(data_str)  # 转义字符
-        try:
-            data = json.loads(data_str)
-            url = data['meta']['detail_1']['qqdocurl']
-            return url
-        except (json.JSONDecodeError, KeyError):
-            pass  # JSON解析失败或字段不存在，则尝试下一种方式
+    # 判断是否包含 CQ JSON 标记
+    if '[CQ:json,data=' in msg.raw_message:
+        m = re.search(r'\[CQ:json,data=(.*)\]', msg.raw_message, re.S)
+        if m:
+            data_str = html.unescape(m.group(1))  # 转义字符
+            try:
+                data_json = json.loads(data_str)
+                url = data_json['meta']['detail_1']['qqdocurl']
+                return url
+            except (json.JSONDecodeError, KeyError):
+                pass  # JSON解析失败或字段不存在，则继续走下一步
 
-    # 分支2：普通字符串
-    url_match = re.search(r'(https?://[^\s]+(?:b23\.tv|video/av)[^\s]*)', msg.raw_message)
+    # 分支2：普通文本匹配 b23.tv 或 video/av
+    url_match = re.search(r'(https?://[^\s]*(?:b23\.tv|video/av)[^\s]*)', msg.raw_message)
     if url_match:
-        return url_match.group(1)
+        return url_match.group(1)  # 注意这里是 group(1)
 
-    # 两种方式都没匹配到
     return None
 
 
