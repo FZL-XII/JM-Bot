@@ -61,7 +61,7 @@ async def download_bilibili_video(url, send):
     data = play['data']
 
     if 'dash' not in data:
-        await send("没有DASH流（可能权限不足或cookie失效）")
+        await send("当前权限不足或登录失效")
         return
 
     dash = data['dash']
