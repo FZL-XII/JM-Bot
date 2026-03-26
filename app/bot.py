@@ -9,7 +9,7 @@ from app.handlers.jm_handler import handle_jm
 from app.handlers.x_handler import handle_x
 
 # ===== 配置 =====
-config.set_bot_uin("2517824720")
+config.set_bot_uin("")
 config.set_root("")
 config.set_ws_uri("ws://localhost:3001")
 config.set_token("")

@@ -59,6 +59,7 @@ async def handle_jm(msg, send):
     elif cmd.isdigit():
         try:
             Path("download").mkdir(exist_ok=True)
+            Path("download/stock").mkdir(exist_ok=True)
             Path("download/pdf").mkdir(exist_ok=True)
             Path("download/encrypted").mkdir(exist_ok=True)
             src = f"download/pdf/{cmd}.pdf"

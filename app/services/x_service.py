@@ -11,6 +11,7 @@ def download_twitter_video(url):
 
     # 创建保存目录
     save_dir = "download/X/"
+    os.makedirs("download", exist_ok=True)
     os.makedirs(save_dir, exist_ok=True)
 
     # 读取cookies

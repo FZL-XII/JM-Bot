@@ -42,9 +42,10 @@ async def handle_douyin(msg):
 
     # 优先下载无水印版本
     download_url = no_watermark_url or watermarked_url or video_urls[0]
+
+    Path("download").mkdir(exist_ok=True)
     Path("download/douyin").mkdir(exist_ok=True)
     output_path = f"download/douyin/{int(time.time())}.mp4"
-
     success = download_video(download_url, str(output_path))
 
     if success:
