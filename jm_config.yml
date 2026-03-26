@@ -1,0 +1,5 @@
+jm-bot:
+  uin: ""
+  root: ""
+  ws_uri: "ws://localhost:3001"
+  token: ""

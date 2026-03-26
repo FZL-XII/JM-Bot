@@ -1,3 +1,4 @@
+import yaml
 from ncatbot.core import BotClient, GroupMessage, PrivateMessage
 from ncatbot.core.element import MessageChain, Text
 from ncatbot.utils.config import config
@@ -8,12 +9,23 @@ from app.handlers.douyin_handler import handle_douyin
 from app.handlers.jm_handler import handle_jm
 from app.handlers.x_handler import handle_x
 
-# ===== 配置 =====
-config.set_bot_uin("")
-config.set_root("")
-config.set_ws_uri("ws://localhost:3001")
-config.set_token("")
 
+def load_config(path="jm_config.yml"):
+    with open(path, "r", encoding="utf-8") as f:
+        data = yaml.safe_load(f)
+
+    bot_cfg = data.get("jm-bot", {})
+
+    config.set_bot_uin(bot_cfg.get("uin", ""))
+    config.set_root(bot_cfg.get("root", ""))
+    config.set_ws_uri(bot_cfg.get("ws_uri", ""))
+    config.set_token(bot_cfg.get("token", ""))
+
+
+# 先加载配置
+load_config()
+
+# 再初始化 bot
 bot = BotClient()
 _log = get_log()
 

@@ -8,9 +8,19 @@ import time
 import urllib.parse as up
 
 import requests
+import yaml
 
-cookie = {
-}
+
+def get_bilibili_cookie(yaml_path="bilibili_config.yml"):
+    with open(yaml_path, "r", encoding="utf-8") as f:
+        cfg = yaml.safe_load(f)
+    # 只返回 cookie 部分
+    return cfg.get("cookie", {})
+
+
+# 使用
+cookie = get_bilibili_cookie()
+
 header = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
                   '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
