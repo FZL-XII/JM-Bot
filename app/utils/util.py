@@ -1,13 +1,17 @@
 import asyncio
 import os
+import shutil
 
 import pyzipper
 
 
-async def auto_delete(path, delay):
+async def auto_delete(path, delay=0):
     await asyncio.sleep(delay)
-    if os.path.exists(path):
-        os.remove(path)
+
+    if os.path.isfile(path):
+        os.remove(path)  # 删除文件
+    elif os.path.isdir(path):
+        shutil.rmtree(path)  # 删除整个文件夹（包括里面所有内容）
 
 
 def zip_single_video(file_path, output_zip, password):

@@ -26,5 +26,5 @@ async def handle_x(msg, send):
     ]))
 
     await send("密码为你的QQ号")
-    await auto_delete(output_path, 0)
+    await auto_delete(output_path)
     await auto_delete(output_zip, 20)

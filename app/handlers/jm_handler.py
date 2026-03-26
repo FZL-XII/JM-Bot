@@ -74,8 +74,9 @@ async def handle_jm(msg, send):
             ]))
 
             await send("密码为本子ID")
-            await auto_delete(src, 0)
+            await auto_delete(src)
             await auto_delete(dst, 20)
+            await auto_delete("download/stock")
 
         except Exception as e:
             await send(f"下载失败：{str(e)}")
