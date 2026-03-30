@@ -1,11 +1,11 @@
-import os
 import time
 from pathlib import Path
+
+from ncatbot.core.element import MessageChain, File
 
 from app.services.douyin_service import extract_url, is_douyin_url, get_real_url
 from app.services.douyin_service import get_video_id, fetch_video_data, download_video
 from app.utils.util import auto_delete
-from ncatbot.core.element import MessageChain, Text, File
 
 
 async def handle_douyin(msg):

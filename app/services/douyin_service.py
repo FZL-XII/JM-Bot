@@ -2,11 +2,9 @@ import json
 import re
 import subprocess
 import sys
-from pathlib import Path
+import requests
 
 try:
-    import requests
-
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
